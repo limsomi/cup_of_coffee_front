@@ -1,0 +1,17 @@
+.cate_componet
+{
+    background-color: #D9D9D9;
+    width: 230px;
+    height: 80px;
+    text-align: center;
+    line-height : 80px;
+    margin:20px;
+    float:left;
+    font-weight: bold;
+}
+
+.cate_group
+{
+    display: flex;
+    align-items: center;
+}
