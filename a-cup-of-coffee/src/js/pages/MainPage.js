@@ -6,7 +6,7 @@ function MainPage() {
     <div>
         <div className='header'>
             <img src={logo} alt='img'/>
-
+            <div className='write-button'>글쓰기</div>
         </div>
         <div className='button-content'>
 
