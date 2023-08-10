@@ -1,6 +1,5 @@
 import React from 'react'
 import styed from 'styled-components';
-import "../../css/MainPage.css";
 import Header from '../components/Header';
 function MainPage() {
     const Categroup =()=>{
