@@ -2,7 +2,7 @@ import React from 'react'
 import styed from 'styled-components';
 
 function renderCategory(){
-    const category=['선배들의 스펙 및 자료 공유','현직자들과 커피챗','이지 / 회사생활 고민','취업 관련 질문',
+    const category=['선배들의 스펙 및 자료 공유','현직자들과 커피챗','이직 / 회사생활 고민','취업 관련 질문',
     '부트캠프 / 클래스 수강 후기','대학원 고민'];
 
     return  category.map((item)=>(
