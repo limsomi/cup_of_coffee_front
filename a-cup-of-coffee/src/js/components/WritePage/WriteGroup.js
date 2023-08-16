@@ -4,7 +4,41 @@ import Editor from './EditorComponenet'
 import UploadFiles from './UploadFiles';
 function WriteGroup() {
   const [selectedDropvalue,setSelectedDropValue]=useState('카테고리 선택');
+  const [title,setTitle]=useState('');
   const [desc,setDesc]=useState('');
+  const uploadReferenece=React.createRef();
+
+  async function onClickSearch()
+  {
+    if(title.trim()=='')
+    {
+      alert('제목을 입력해주세요');return;
+    }
+    else if(desc.trim()=='')
+    {
+      alert('내용을 입력해주세요');return;
+    }
+    await uploadReferenece.current.upload().then(function (result) {
+    
+      const files = result;
+    
+      alert('저장 완료');
+        // ajax('/api/notice/saveNotice', { title: title, desc: desc, type: type, files: files }, (res) => {
+        //     if (res.data && res.data.ok === 1) {
+        //         alert('저장 완료');
+        //         setId(res.data.insertedId);
+        //         var linkToClick = document.getElementById('notice_Detail_Link');
+        //         linkToClick.click();
+        //     } else {
+        //         alert('공지사항을 저장하는 도중 오류가 발생하였습니다.')
+        //     }
+        // }, null, true); 
+    
+    }).catch(function (err) {
+    
+    });
+  }
+
 
   function onEditorChange(value){
     setDesc(value)
@@ -31,15 +65,15 @@ function WriteGroup() {
     <Write>
         <WriteTitle>게시글 작성</WriteTitle>
         <WriteBack>
-            <InputTitle placeholder='제목을 입력해주세요'></InputTitle>
-            <UploadFiles/>
+            <InputTitle placeholder='제목을 입력해주세요'onChange={(event)=>setTitle(event.target.value)}></InputTitle>
+            <UploadFiles ref={uploadReferenece}/>
             <Editor value={desc} onChange={onEditorChange}></Editor>
             <SelectCategory onChange={handleCategory}>
               {Category_List.map(el=>{
                 return <option key={el.id}>{el.value}</option>;
               })}
             </SelectCategory>
-            <SaveButton>저장</SaveButton>
+            <SaveButton onClick={onClickSearch}>저장</SaveButton>
         </WriteBack>
     </Write>
 
@@ -77,7 +111,7 @@ font-weight:bold;
 margin-bottom:10px;
 `
 
-const SaveButton=styled.div`
+const SaveButton=styled.button`
 background-color: white;
 border-radius:10px;
 font-weight: bold;
@@ -87,6 +121,7 @@ margin:25px 10px 0 0;
 text-align: center;
 line-height : 50px;
 float:right;
+border-color:white;
 `
 
 const SelectCategory=styled.select`
