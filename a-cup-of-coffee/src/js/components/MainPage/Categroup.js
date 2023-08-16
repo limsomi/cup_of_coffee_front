@@ -12,7 +12,7 @@ function renderCategory(){
 function Categroup (){
     return(
         <Cate>
-            <p>카테고리 바로가기</p>
+            <CateTitle>카테고리 바로가기</CateTitle>
             <CateSubgroup>{renderCategory()}</CateSubgroup>
         </Cate>
 
@@ -28,7 +28,7 @@ const Cate=styed.div`
     width: auto;
     margin:0px 70px 0px 0px;
     position: relative;
-    top:80px;
+    top:70px;
     `
 const CateSubgroup=styed.div`
     width:850px;
@@ -45,4 +45,9 @@ const CateButton=styed.div`
     line-height:80px;
     margin:20px;
     font-weight: bold;
+`
+
+const CateTitle=styed.div`
+    font-size:25px;
+    font-weight:bold;
 `

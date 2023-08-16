@@ -27,7 +27,7 @@ function Postgroup (){
     }
     return(
         <Post>
-            <p>인기 카테고리는?</p>
+            <PostTitle>인기 카테고리는?</PostTitle>
             <PostSubgroup>{renderPopularCate()}</PostSubgroup>    
         </Post>
     );
@@ -40,7 +40,7 @@ export default Postgroup;
 
 const Post=styed.div`
     position: relative;
-    top:230px;
+    top:200px;
     margin-right:50px;
     `
 const PostSubgroup=styed.div`
@@ -63,4 +63,8 @@ const Title=styed.div`
 `
 const Content=styed.div`
     margin-top: 15px;
+`
+const PostTitle=styed.div`
+    font-size:25px;
+    font-weight:bold;
 `

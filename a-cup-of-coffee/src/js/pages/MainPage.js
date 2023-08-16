@@ -6,12 +6,6 @@ import Postgroup from '../components/MainPage/Postgroup';
 import Chatgroup from '../components/MainPage/Chatgroup';
 
 function MainPage() {
-
-    const ButtonGroup=styed.div`
-    float:right;
-    height:800px;
-    margin-right:50px;
-    `
     
     return (
     <div>
@@ -26,3 +20,9 @@ function MainPage() {
 }
 
 export default MainPage
+
+const ButtonGroup=styed.div`
+float:right;
+height:800px;
+margin-right:10px;
+`
