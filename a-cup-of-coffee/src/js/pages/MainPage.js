@@ -1,6 +1,6 @@
 import React from 'react'
 import styed from 'styled-components';
-import Header from '../components/Header';
+import Header from '../components/common/Header';
 import Categroup from '../components/MainPage/Categroup';
 import Postgroup from '../components/MainPage/Postgroup';
 import Chatgroup from '../components/MainPage/Chatgroup';

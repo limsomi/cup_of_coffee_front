@@ -1,8 +1,14 @@
 import React,{useState} from 'react'
 import { styled } from 'styled-components'
-
+import Editor from './EditorComponenet'
+import UploadFiles from './UploadFiles';
 function WriteGroup() {
   const [selectedDropvalue,setSelectedDropValue]=useState('카테고리 선택');
+  const [desc,setDesc]=useState('');
+
+  function onEditorChange(value){
+    setDesc(value)
+  }
   const Category_List=
   [
     {id:null,value:'카테고리 선택'},
@@ -14,6 +20,7 @@ function WriteGroup() {
     {id:'06',value:'대학원 고민'}
   ];
 
+
   const handleCategory = e => 
   {
     const { value } = e.target;
@@ -24,8 +31,9 @@ function WriteGroup() {
     <Write>
         <WriteTitle>게시글 작성</WriteTitle>
         <WriteBack>
-            <InputTitle></InputTitle>
-            <InputContent></InputContent>
+            <InputTitle placeholder='제목을 입력해주세요'></InputTitle>
+            <UploadFiles/>
+            <Editor value={desc} onChange={onEditorChange}></Editor>
             <SelectCategory onChange={handleCategory}>
               {Category_List.map(el=>{
                 return <option key={el.id}>{el.value}</option>;
@@ -59,21 +67,14 @@ height:45px;
 border-radius:20px;
 border-color:white;
 margin-top:17px;
+padding-left:10px;
 `
-const InputContent=styled.input`
-width:750px;
-height:600px;
-background-color: white;
-border-color:white;
-border-radius:20px;
-display:inline-block;
-position:relative;
-top:30px;
-`
+
 
 const WriteTitle=styled.div`
 font-size:25px;
 font-weight:bold;
+margin-bottom:10px;
 `
 
 const SaveButton=styled.div`
@@ -82,7 +83,7 @@ border-radius:10px;
 font-weight: bold;
 height:50px;
 width:150px;
-margin:45px 10px 0 0;
+margin:25px 10px 0 0;
 text-align: center;
 line-height : 50px;
 float:right;
@@ -92,5 +93,5 @@ const SelectCategory=styled.select`
 float:left;
 width:200px;
 height:50px;
-margin:50px 0 0 20px;
+margin:25px 0 0 20px;
 `
