@@ -1,16 +1,42 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styed from 'styled-components';
 
 function Chatgroup (){
+    const [comment,setComment]=useState('');
+    const [feedComments,setFeedComments]=useState([]);
+    const [IsValid,setIsValid]=useState(false);
+
+    let post =e=>{
+        const copyFeedComments=[...feedComments];
+        copyFeedComments.push(comment);
+        setFeedComments(copyFeedComments);
+        setComment('');
+    }
+    function renderComment(){
+        return feedComments.map((item)=>{
+            <Comment>{item}</Comment>
+        })
+    }
     return(
         <ChatContent>
             <p>뜨거운 커피챗방_배달의 민족 FE</p>
             <ChatBackground>
-                <Chat/>
+                <Chat>
+                    {renderComment()}
+                </Chat>
                 <ChatUnderbar>
                     <hr></hr>
-                    <Banner>뜨거운 커피챗방에 참여해보세요!</Banner>
-                    <SendButton>전송하기</SendButton>
+                    <Banner placeholder='뜨거운 커피챗방에 참여해보세요!'
+                    onChange={e=>{
+                        setComment(e.target.value)
+                    }}
+                    onKeyUp={e=>{
+                        e.target.value.length>0
+                            ? setIsValid(true)
+                            : setIsValid(false)
+                    }}
+                    value={comment}/>
+                    <SendButton onClick={post}>전송하기</SendButton>
                 </ChatUnderbar>
             </ChatBackground>
         </ChatContent>
@@ -43,10 +69,18 @@ height:70px;
 margin-bottom: 0px;
 `
 
-const Banner=styed.div`
+const Banner=styed.input`
 float: left;
-margin:17px 0 10px 35px;
+margin:10px 0 10px 15px;
+padding-left:15px;
 font-weight: bold;
+width:290px;
+height:50px;
+border-radius:10px;
+border-color:white;
+&:focus{
+    outline:none;
+}
 `
 
 const SendButton=styed.button`
@@ -57,4 +91,11 @@ height:50px;
 width:100px;
 float:right;
 margin-right:10px;
+margin-top:10px;
+`
+
+const Comment=styed.div`
+background-color:white;
+height:200px;
+widht:200px;
 `

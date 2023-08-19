@@ -101,7 +101,15 @@ height:45px;
 border-radius:20px;
 border-color:white;
 margin-top:17px;
-padding-left:10px;
+padding-left:15px;
+font-size:15px;
+&:focus{
+  outline:none;
+}
+&::placeholder{
+  color:#D9D9D9;
+  font-weight:bold;
+}
 `
 
 

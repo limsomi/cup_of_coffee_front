@@ -27,7 +27,7 @@ function Postgroup (){
     }
     return(
         <Post>
-            <PostTitle>인기 카테고리는?</PostTitle>
+            <PostTitle>인기 게시글은?</PostTitle>
             <PostSubgroup>{renderPopularCate()}</PostSubgroup>    
         </Post>
     );
